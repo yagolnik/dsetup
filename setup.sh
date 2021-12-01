@@ -21,13 +21,13 @@ case $os in
         1)
         echo "[centos]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts prod.yml -l $ipaddr
+        ansible-playbook -i ./hosts prod.yml -l $ipaddr --ask-pass
         > ./hosts
                                         ;;
         2)
         echo "[ubuntu]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts prod.yml -l $ipaddr
+        ansible-playbook -i ./hosts prod.yml -l $ipaddr --ask-pass
         > ./hosts
         
                                 
@@ -35,7 +35,7 @@ case $os in
         3)
         echo "[debian]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts  prod.yml -l $ipaddr
+        ansible-playbook -i ./hosts  prod.yml -l $ipaddr --ask-pass
         > ./hosts
 
                                         ;;                                                     
@@ -53,13 +53,13 @@ case $os in
         1)
         echo "[centos]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts prod.yml -l $ipaddr --skip-tag=ssd
+        ansible-playbook -i ./hosts prod.yml -l $ipaddr --skip-tag=ssd --ask-pass
         > ./hosts
                                         ;;
         2)
         echo "[ubuntu]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts prod.yml -l $ipaddr  --skip-tag=ssd
+        ansible-playbook -i ./hosts prod.yml -l $ipaddr  --skip-tag=ssd --ask-pass
         > ./hosts
         
                                 
@@ -67,7 +67,7 @@ case $os in
         3)
         echo "[debian]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts  prod.yml -l $ipaddr  --skip-tag=ssd
+        ansible-playbook -i ./hosts  prod.yml -l $ipaddr  --skip-tag=ssd --ask-pass
         > ./hosts
 
                                         ;;                                                     
