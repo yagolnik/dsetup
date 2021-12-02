@@ -13,61 +13,43 @@ case $Answer in
    ssd=0 
                                         ;;  
                                                 esac
-if [[ "$ssd" = 1 ]]; then
+                                                
 echo -en "Select OS:\n1)Centos\n2)Ubuntu\n3)Debian\n"
 read -p "Select OS:" os
 case $os in
 
         1)
+        
         echo "[centos]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
+        if [[ "$ssd" = 1 ]]; then
         ansible-playbook -i ./hosts prod.yml -l $ipaddr --ask-pass
-        > ./hosts
-                                        ;;
-        2)
-        echo "[ubuntu]" >> ./hosts
-        echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts prod.yml -l $ipaddr --ask-pass
-        > ./hosts
         
-                                
-                                ;;
-        3)
-        echo "[debian]" >> ./hosts
-        echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts  prod.yml -l $ipaddr --ask-pass
-        > ./hosts
-
-                                        ;;                                                     
-        *) echo "Invalid input"
-        
-                                        ;;
-    esac
-
-else    
-    
-    echo -en "Select OS:\n1)Centos\n2)Ubuntu\n3)Debian\n"
-read -p "Select OS:" os
-case $os in
-
-        1)
-        echo "[centos]" >> ./hosts
-        echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
+        else
         ansible-playbook -i ./hosts prod.yml -l $ipaddr --skip-tag=ssd --ask-pass
+        fi
         > ./hosts
                                         ;;
         2)
         echo "[ubuntu]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts prod.yml -l $ipaddr  --skip-tag=ssd --ask-pass
-        > ./hosts
+        if [[ "$ssd" = 1 ]]; then
+        ansible-playbook -i ./hosts prod.yml -l $ipaddr --ask-pass
         
-                                
+        else
+        ansible-playbook -i ./hosts prod.yml -l $ipaddr --skip-tag=ssd --ask-pass
+        fi
+        > ./hosts                                
                                 ;;
         3)
         echo "[debian]" >> ./hosts
         echo "$ipaddr ansible_ssh_host=$ipaddr ansible_ssh_user=root" >> ./hosts
-        ansible-playbook -i ./hosts  prod.yml -l $ipaddr  --skip-tag=ssd --ask-pass
+        if [[ "$ssd" = 1 ]]; then
+        ansible-playbook -i ./hosts  prod.yml -l $ipaddr --ask-pass
+        
+        else
+        ansible-playbook -i ./hosts prod.yml -l $ipaddr --skip-tag=ssd --ask-pass
+        fi
         > ./hosts
 
                                         ;;                                                     
@@ -75,5 +57,4 @@ case $os in
         
                                         ;;
     esac
-    
-    fi
+
