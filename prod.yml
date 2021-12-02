@@ -52,9 +52,6 @@
     - name: Change loginterval atop
       lineinfile: dest=/etc/sysconfig/atop regexp='^LOGINTERVAL' line='LOGINTERVAL=30'
     
-    - name: Enable vm.swappiness=1
-      lineinfile: dest=/etc/sysctl.conf regexp='' insertafter=EOF line='vm.swappiness=1'
-      tags: ssd
       
     - name: Enable atop
       systemd:
@@ -68,7 +65,7 @@
        
     - name: Copy logrotate script
       copy: 
-       src: /var/project/atop
+       src: ./atop
        dest: /etc/logrotate.d/
        
     - name: add smart disks
@@ -160,7 +157,7 @@
        
     - name: Copy logrotate script
       copy: 
-       src: /var/project/atop
+       src: ./atop
        dest: /etc/logrotate.d/
        
     - name: add smart disks
@@ -199,6 +196,7 @@
        regexp: '^(\S+\s+/\s+\S+\s+)(?!(?:\S*,)?discard(?:,\S*)?\s+)(\S+)(\s+.+)$'
        line: '\1discard,noatime,commit=120,\2\3'
       tags: ssd
+      
 - hosts: ubuntu
   tasks:
         
@@ -258,8 +256,13 @@
        
     - name: Copy logrotate script
       copy: 
-       src: /var/project/atop
+       src: ./atop
        dest: /etc/logrotate.d/
+       
+    - name: Enable vm.swappiness=1
+      lineinfile: dest=/etc/sysctl.conf regexp='' insertafter=EOF line='vm.swappiness=1'
+      tags: ssd      
+      
        
     - name: add smart disks
       lineinfile: dest=/etc/smartd.conf

@@ -1,0 +1,12 @@
+/var/log/atop/atop_202[0-9][0-9][0-9][0-9][0-9] {
+missingok
+daily
+nodateext
+rotate 1
+ifempty
+nocreate
+postrotate
+/usr/bin/find /var/log/atop/ -maxdepth 1 -mount -name atop_202\[0-9\]\[0-9\]\[0-9\]\[0-9\]\[0-9\]\* -mtime +7 -exec /bin/rm {} \;
+/usr/bin/systemctl restart atop.service
+endscript
+}
