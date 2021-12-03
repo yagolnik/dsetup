@@ -1,9 +1,9 @@
 #!/bin/bash
-
+echo "================== Welcome to setup script ==================="
 echo -n "Enter IP-address: "
 read ipaddr
 
-echo "How many disks in server"  
+echo "How many disks in server?"  
 read -p "[1-3]:" diskcount
 
 echo "Do you have SSD?"  
