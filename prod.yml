@@ -316,7 +316,7 @@
                   backrefs=yes
                   regexp='^DEVICESCAN -d'
                   insertafter='DEVICESCAN -d'
-                  line='/dev/sda -a -s (S/../../(1|3|6)/01|L) -m reports112@freehost.com.ua -M diminishing'
+                  line='/dev/sda -a -s (S/../../(2|4)/01|L/../../6/01) -m reports112@freehost.com.ua -M diminishing'
                   state=present
       tags: ssd1
       
@@ -325,8 +325,8 @@
           dest: /etc/smartd.conf      
           line: '{{ item }}'
       with_items:
-          - '/dev/sda -a -s (S/../../(1|3|6)/01|L) -m reports112@freehost.com.ua -M diminishing'
-          - '/dev/sdb -a -s (S/../../(1|3|6)/01|L) -m reports112@freehost.com.ua -M diminishing'
+          - '/dev/sda -a -s (S/../../(2|4)/01|L/../../6/01) -m reports112@freehost.com.ua -M diminishing'
+          - '/dev/sdb -a -s (S/../../(2|4)/01|L/../../6/01) -m reports112@freehost.com.ua -M diminishing'
 
       tags: ssd2
       
@@ -335,9 +335,9 @@
           dest: /etc/smartd.conf      
           line: '{{ item }}'
       with_items:
-          - '/dev/sda -a -s (S/../../(1|3|6)/01|L) -m reports112@freehost.com.ua -M diminishing'
-          - '/dev/sdb -a -s (S/../../(1|3|6)/01|L) -m reports112@freehost.com.ua -M diminishing'
-          - '/dev/sdc -a -s (S/../../(1|3|6)/01|L) -m reports112@freehost.com.ua -M diminishing'
+          - '/dev/sda -a -s (S/../../(2|4)/01|L/../../6/01) -m reports112@freehost.com.ua -M diminishing'
+          - '/dev/sdb -a -s (S/../../(2|4)/01|L/../../6/01) -m reports112@freehost.com.ua -M diminishing'
+          - '/dev/sdc -a -s (S/../../(2|4)/01|L/../../6/01) -m reports112@freehost.com.ua -M diminishing'
 
       tags: ssd3
       
