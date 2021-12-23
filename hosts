@@ -1,0 +1,2 @@
+[centos]
+10.10.10.3 ansible_ssh_host=10.10.10.3 ansible_ssh_user=root

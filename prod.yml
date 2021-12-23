@@ -228,11 +228,11 @@
                
     - name: Check mdadm exist
       stat:
-       path: /etc/mdadm.conf
+       path: /etc/mdadm/mdadm.conf
       register: stat_result
 
     - name: Change mdadm conf
-      lineinfile: dest=/etc/mdadm.conf backrefs=yes regexp='^MAILADDR' line='MAILADDR reports112@freehost.com.ua'
+      lineinfile: dest=/etc/mdadm/mdadm.conf backrefs=yes regexp='^MAILADDR' line='MAILADDR reports112@freehost.com.ua'
       when: stat_result.stat.exists
       
     - name: '/etc/fstab: Set options for mount point root '
@@ -355,11 +355,11 @@
                
     - name: Check mdadm exist
       stat:
-       path: /etc/mdadm.conf
+       path: /etc/mdadm/mdadm.conf
       register: stat_result
 
     - name: Change mdadm conf
-      lineinfile: dest=/etc/mdadm.conf backrefs=yes regexp='^MAILADDR' line='MAILADDR reports112@freehost.com.ua'
+      lineinfile: dest=/etc/mdadm/mdadm.conf backrefs=yes regexp='^MAILADDR' line='MAILADDR reports112@freehost.com.ua'
       when: stat_result.stat.exists
       
     - name: '/etc/fstab: Set options for mount point "/" '
