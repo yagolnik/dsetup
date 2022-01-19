@@ -72,8 +72,8 @@
     - name: add smart disks
       lineinfile: dest=/etc/smartmontools/smartd.conf
                   backrefs=yes
-                  regexp='^DEVICESCAN -d'
-                  insertafter='DEVICESCAN -d'
+                  regexp='^DEVICESCAN -H -m'
+                  insertafter='DEVICESCAN -H -m'
                   line='/dev/sda -a -s (S/../../(1|3|6)/01|L) -m reports112@freehost.com.ua -M diminishing'
                   state=present
       tags: ssd1
