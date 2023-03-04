@@ -79,3 +79,4 @@ read -p "Select OS:" os
           esac 
           
         > ./hosts
+        
