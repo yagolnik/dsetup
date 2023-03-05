@@ -138,12 +138,11 @@
         - vim
         - nano
         - tmux
-        - mlocate
         - man-db
         - logwatch
         - iotop
         - curl
-        - gnupg2
+
 
     - name: Start smartd
       systemd: 
