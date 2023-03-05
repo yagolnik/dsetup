@@ -133,7 +133,6 @@
         - iftop
         - wget
         - smartmontools
-        - strace 
         - mc
         - vim
         - nano
