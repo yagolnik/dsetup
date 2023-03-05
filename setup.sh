@@ -80,3 +80,4 @@ read -p "Select OS:" os
           
         > ./hosts
         
+        
